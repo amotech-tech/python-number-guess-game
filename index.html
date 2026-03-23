@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Rumiz | Weddings, Parties & Corporate Events</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --accent-color: #00e5ff; 
+            --text-color: #ffffff;
+            --muted-text: #aaaaaa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        section {
+            padding: 100px 20px 80px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+            text-align: center;
+        }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(13, 13, 13, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-img { height: 50px; width: auto; display: block; }
+
+        .nav-links { list-style: none; display: flex; gap: 25px; }
+        .nav-links a { font-weight: 700; font-size: 0.9rem; text-transform: uppercase; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent-color); }
+
+        #home {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding-top: 0; padding-bottom: 0;
+        }
+
+        .hero-container {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1200px; width: 100%; margin: 0 auto; gap: 40px;
+        }
+
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; }
+        .hero-text p { font-size: 1.2rem; color: var(--muted-text); margin-bottom: 30px; }
+
+        .cta-btn {
+            display: inline-block; padding: 15px 35px; background-color: var(--accent-color); color: #000;
+            font-weight: 700; text-transform: uppercase; border-radius: 5px; transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+        }
+
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(0, 229, 255, 0.6); background-color: #fff; }
+
+        .hero-img-box { flex: 1; display: flex; justify-content: center; align-items: center; }
+        .hero-img-box img { max-width: 380px; width: 100%; height: auto; border-radius: 10px; filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.3)); }
+
+        #about { background-color: #111; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; max-width: 1000px; gap: 50px; align-items: center; }
+        .about-content h3 { font-size: 2rem; margin-bottom: 20px; color: var(--accent-color); }
+        .about-content p { line-height: 1.8; color: var(--muted-text); margin-bottom: 20px; }
+
+        .genres { display: flex; flex-wrap: wrap; gap: 15px; }
+        .genre-tag { background: var(--card-bg); border: 1px solid var(--accent-color); padding: 8px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; }
+
+        .music-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; width: 100%; }
+        .mix-card { background: var(--card-bg); border-radius: 10px; overflow: hidden; transition: transform 0.3s ease; }
+        .mix-card:hover { transform: translateY(-5px); }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .mix-info { padding: 20px; }
+        .mix-info h4 { font-size: 1.1rem; margin-bottom: 10px; }
+
+      
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; width: 100%; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 10px; height: 250px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 229, 255, 0.7); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        #contact { background-color: #111; }
+        .contact-form { background: var(--card-bg); padding: 40px; border-radius: 10px; max-width: 600px; width: 100%; display: flex; flex-direction: column; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-size: 0.9rem; font-weight: 700; color: var(--muted-text); }
+        .form-group input, .form-group select, .form-group textarea {
+            background: #2a2a2a; border: 1px solid #3a3a3a; padding: 15px;
+            border-radius: 5px; color: #fff; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); }
+        
+        .send-btn {
+            background-color: var(--accent-color); color: #000; padding: 15px; border: none; border-radius: 5px;
+            font-weight: 700; font-size: 1rem; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
+        .send-btn:hover { box-shadow: 0 0 20px rgba(0, 229, 255, 0.5); transform: translateY(-2px); }
+
+        footer { background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
+        .social-links a { font-size: 1.5rem; color: var(--muted-text); transition: color 0.3s ease; }
+        .social-links a:hover { color: var(--accent-color); }
+
+        @media (max-width: 900px) {
+            .hero-container { flex-direction: column; text-align: center; padding-top: 100px; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#home">
+                <img src="Rumiz.png" alt="DJ Rumiz Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Services</a></li>
+                <li><a href="#music">Music</a></li>
+                
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Elevate Your Event</h1>
+                <p>Curating premium sonic atmospheres for Weddings, Corporate Shows, Graduations, and Private Parties.</p>
+                <a href="#contact" class="cta-btn">Book DJ Rumiz</a>
+            </div>
+            <div class="hero-img-box">
+                <img src="rumizImage.png" alt="DJ Rumiz Profile">
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Event Services</h2>
+        <div class="about-grid">
+            <div class="about-content">
+                <h3>Vibes Tailored to Your Crowd</h3>
+                <p>DJ Rumiz offers end-to-end sets for life's biggest milestones. Whether it's setting romantic tones for a wedding reception, building hype for outdoor concerts, or keeping graduates dancing, the musical trajectory shifts to fit your audience.</p>
+                <p>Expect high fidelity gear, zero acoustic dead-spots, and pristine set lists.</p>
+                <div class="genres">
+                    <span class="genre-tag">Weddings</span>
+                    <span class="genre-tag">Graduations</span>
+                    <span class="genre-tag">Corporate Galas</span>
+                    <span class="genre-tag">Private House Parties</span>
+                </div>
+            </div>
+            <div>
+                <h3>Signature Genres</h3>
+                <div class="genres">
+                    <span class="genre-tag">Amapiano</span>
+                    <span class="genre-tag">Afrobeats</span>
+                    <span class="genre-tag">Dancehall</span>
+                    <span class="genre-tag">Hip Hop</span>
+                    <span class="genre-tag">Oldies & Throwbacks</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="music">
+        <h2 class="section-title">Live Sets</h2>
+        <div class="music-grid">
+            <div class="mix-card">
+                <div class="video-wrapper">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/fIkoE-8UWwg?si=7kAqu0wrZDbB7-6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="mix-info"><h4>Gospel mix</h4></div>
+            </div>
+            <div class="mix-card">
+                <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/vjrj6_jUQ54?si=Q4XXxU5awyVYHqe1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="mix-info"><h4> Sample</h4></div>
+       
+        </div>
+    </section>
+
+    
+    <section id="gallery">
+        <h2 class="section-title">The Vibe</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80" alt="Crowd partying">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=400&q=80" alt="Club lights">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=400&q=80" alt="DJ deck spinning">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Book DJ Rumiz</h2>
+        <form id="whatsappForm" class="contact-form">
+            <div class="form-group">
+                <label for="userName">Your Full Name</label>
+                <input type="text" id="userName" placeholder="joel peter" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventType">What Event are You Planning?</label>
+                <select id="eventType" required>
+                    <option value="" disabled selected>Choose event type...</option>
+                    <option value="Wedding">Wedding Ceremony/Reception</option>
+                    <option value="Graduation">Graduation Party</option>
+                    <option value="Corporate Show">Corporate Launch/Gala</option>
+                    <option value="Private Party">Private House Party/Birthday</option>
+                    <option value="Club/Lounge">Club Residency</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="userMessage">Event Constraints/Notes</label>
+                <textarea id="userMessage" rows="4" placeholder="Date, venue location....." required></textarea>
+            </div>
+
+            <button type="submit" class="send-btn">
+                <i class="fa-brands fa-whatsapp"></i> Book via WhatsApp
+            </button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2026 DJ Rumiz. Set lists on lock.</p>
+    </footer>
+
+    <script>
+        // Use your telephone prefix (no plus signs) 
+        const DJ_PHONE_NUMBER = "254700000000"; 
+        
+        const form = document.getElementById('whatsappForm');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('userName').value;
+            const eventType = document.getElementById('eventType').value;
+            const message = document.getElementById('userMessage').value;
+
+            // Formats specific booking details into prompt readout
+            const fullText = `Hello DJ Rumiz, my name is ${name}. I would like to book you for a ${eventType}. Details: ${message}`;
+            const encodedText = encodeURIComponent(fullText);
+
+            const whatsappLink = `https://wa.me/${DJ_PHONE_NUMBER}?text=${encodedText}`;
+
+            window.open(whatsappLink, '_blank');
+        });
+    </script>
+</body>
+</html>
