@@ -81,6 +81,25 @@
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             padding-top: 0; padding-bottom: 0;
         }
+        .music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+#drops div, #tools div {
+    margin: 15px 0;
+    padding: 15px;
+    background: #111;
+    border-radius: 10px;
+}
 
         .hero-container {
             display: flex; align-items: center; justify-content: space-between;
@@ -214,22 +233,19 @@
     </section>
 
     <section id="music">
-        <h2 class="section-title">Live Sets</h2>
-        <div class="music-grid">
-            <div class="mix-card">
-                <div class="video-wrapper">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/fIkoE-8UWwg?si=7kAqu0wrZDbB7-6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="mix-info"><h4>Gospel mix</h4></div>
-            </div>
-            <div class="mix-card">
-                <div class="video-wrapper">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/vjrj6_jUQ54?si=Q4XXxU5awyVYHqe1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="mix-info"><h4> Sample</h4></div>
-       
-        </div>
-    </section>
+    <h2>Mixes</h2>
+    <div id="mixes" class="music-grid"></div>
+</section>
+
+<section>
+    <h2>DJ Drops</h2>
+    <div id="drops"></div>
+</section>
+
+<section>
+    <h2>DJ Tools</h2>
+    <div id="tools"></div>
+</section>
 
     
     <section id="gallery">
@@ -291,7 +307,7 @@
 
     <script>
         // Use your telephone prefix (no plus signs) 
-        const DJ_PHONE_NUMBER = "254700000000"; 
+        const DJ_PHONE_NUMBER = "254741131039"; 
         
         const form = document.getElementById('whatsappForm');
 
@@ -310,6 +326,68 @@
 
             window.open(whatsappLink, '_blank');
         });
+const sheetID = "1VlB0cd_P-PB5Xuwo01JYhPax77r09gRgdNzYRM705Ik";
+const url = `https://opensheet.elk.sh/${sheetID}/Form%20Responses%201`;
+fetch(url)
+.then(res => res.json())
+.then(data => {
+
+    let mixes = document.getElementById("mixes");
+    let drops = document.getElementById("drops");
+    let tools = document.getElementById("tools");
+
+    data.reverse().forEach(row => {
+
+        let type = row["Content Type"];
+        let title = row["Title"];
+
+        // MIXES
+        if(type === "Mix"){
+            let videoURL = row["YouTube Link"];
+            if(videoURL){
+                let videoID = videoURL.split("v=")[1];
+                if(videoID){
+                    videoID = videoID.split("&")[0];
+
+                    let div = document.createElement("div");
+                    div.innerHTML = `
+                        <iframe src="https://www.youtube.com/embed/${videoID}" allowfullscreen></iframe>
+                        <p>${title}</p>
+                    `;
+                    mixes.appendChild(div);
+                }
+            }
+        }
+
+        // DJ DROPS
+        if(type === "DJ Drop"){
+            let audio = row["Audio Link"];
+            if(audio){
+                let div = document.createElement("div");
+                div.innerHTML = `
+                    <p>${title}</p>
+                    <audio controls src="${audio}"></audio>
+                `;
+                drops.appendChild(div);
+            }
+        }
+
+        // SOFTWARE
+        if(type === "Software"){
+            let link = row["Download Link"];
+            if(link){
+                let div = document.createElement("div");
+                div.innerHTML = `
+                    <p>${title}</p>
+                    <a href="${link}" target="_blank">Download</a>
+                `;
+                tools.appendChild(div);
+            }
+        }
+
+    });
+});
+
     </script>
 </body>
 </html>
