@@ -210,12 +210,12 @@ iframe {
         <div class="about-grid">
             <div class="about-content">
                 <h3>Vibes Tailored to Your Crowd</h3>
-                <p>DJ Rumiz offers end-to-end sets for life's biggest milestones. Whether it's setting romantic tones for a wedding reception, building hype for outdoor concerts, or keeping graduates dancing, the musical trajectory shifts to fit your audience.</p>
+                <p>DJ Rumiz offers sets for life's biggest milestones. Whether it's setting romantic tones for a wedding reception, building hype for outdoor concerts, or keeping graduates dancing, the musical trajectory shifts to fit your audience.</p>
                 <p>Expect high fidelity gear, zero acoustic dead-spots, and pristine set lists.</p>
                 <div class="genres">
                     <span class="genre-tag">Weddings</span>
                     <span class="genre-tag">Graduations</span>
-                    <span class="genre-tag">Corporate Galas</span>
+                    <span class="genre-tag">Corporate Events</span>
                     <span class="genre-tag">Private House Parties</span>
                 </div>
             </div>
@@ -226,28 +226,23 @@ iframe {
                     <span class="genre-tag">Afrobeats</span>
                     <span class="genre-tag">Dancehall</span>
                     <span class="genre-tag">Hip Hop</span>
-                    <span class="genre-tag">Oldies & Throwbacks</span>
+                    <span class="genre-tag">Oldies</span>
                 </div>
             </div>
         </div>
     </section>
-
     <section id="music">
     <h2>Mixes</h2>
     <div id="mixes" class="music-grid"></div>
 </section>
-
 <section>
     <h2>DJ Drops</h2>
     <div id="drops"></div>
 </section>
-
 <section>
     <h2>DJ Tools</h2>
     <div id="tools"></div>
-</section>
-
-    
+</section>    
     <section id="gallery">
         <h2 class="section-title">The Vibe</h2>
         <div class="gallery-grid">
@@ -306,7 +301,7 @@ iframe {
     </footer>
 
     <script>
-        // Use your telephone prefix (no plus signs) 
+       
         const DJ_PHONE_NUMBER = "254741131039"; 
         
         const form = document.getElementById('whatsappForm');
@@ -318,7 +313,7 @@ iframe {
             const eventType = document.getElementById('eventType').value;
             const message = document.getElementById('userMessage').value;
 
-            // Formats specific booking details into prompt readout
+            
             const fullText = `Hello DJ Rumiz, my name is ${name}. I would like to book you for a ${eventType}. Details: ${message}`;
             const encodedText = encodeURIComponent(fullText);
 
