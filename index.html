@@ -135,9 +135,7 @@ iframe {
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .mix-info { padding: 20px; }
-        .mix-info h4 { font-size: 1.1rem; margin-bottom: 10px; }
-
-      
+        .mix-info h4 { font-size: 1.1rem; margin-bottom: 10px; }      
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; width: 100%; }
         .gallery-item { position: relative; overflow: hidden; border-radius: 10px; height: 250px; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
@@ -260,7 +258,6 @@ iframe {
             </div>
         </div>
     </section>
-
     <section id="contact">
         <h2 class="section-title">Book DJ Rumiz</h2>
         <form id="whatsappForm" class="contact-form">
@@ -300,8 +297,7 @@ iframe {
         <p>&copy; 2026 DJ Rumiz. Set lists on lock.</p>
     </footer>
 
-    <script>
-       
+    <script>       
         const DJ_PHONE_NUMBER = "254741131039"; 
         
         const form = document.getElementById('whatsappForm');
@@ -354,7 +350,7 @@ fetch(url)
             }
         }
 
-        // DJ DROPS
+       
         if(type === "DJ Drop"){
             let audio = row["Audio Link"];
             if(audio){
@@ -367,7 +363,7 @@ fetch(url)
             }
         }
 
-        // SOFTWARE
+        
         if(type === "Software"){
             let link = row["Download Link"];
             if(link){
@@ -379,10 +375,8 @@ fetch(url)
                 tools.appendChild(div);
             }
         }
-
     });
 });
-
     </script>
 </body>
 </html>
