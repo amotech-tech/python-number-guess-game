@@ -317,38 +317,41 @@ iframe {
 
             window.open(whatsappLink, '_blank');
         });
+
 const sheetID = "1VlB0cd_P-PB5Xuwo01JYhPax77r09gRgdNzYRM705Ik";
-const url = `https://opensheet.elk.sh/${sheetID}/Form%20Responses%201`;
+const url = `https://opensheet.elk.sh/${sheetID}/Untitled%20form%20(Responses)`;
 fetch(url)
 .then(res => res.json())
 .then(data => {
 
-    let mixes = document.getElementById("mixes");
-    let drops = document.getElementById("drops");
-    let tools = document.getElementById("tools");
+    console.log(data); // ✅ works here
+
+    if(!Array.isArray(data)){
+        console.error("Data is not an array");
+        return;
+    }
+
+    let container = document.getElementById("mixes");
+    container.innerHTML = ""; // clear before reload
 
     data.reverse().forEach(row => {
+        let videoURL = row["YouTube Link"];
 
-        let type = row["Content Type"];
-        let title = row["Title"];
+        if(videoURL){
+            let videoID = videoURL.split("v=")[1];
+            if(videoID){
+                videoID = videoID.split("&")[0];
 
-        // MIXES
-        if(type === "Mix"){
-            let videoURL = row["YouTube Link"];
-            if(videoURL){
-                let videoID = videoURL.split("v=")[1];
-                if(videoID){
-                    videoID = videoID.split("&")[0];
+                let div = document.createElement("div");
+                div.innerHTML = `
+                    <iframe src="https://www.youtube.com/embed/${videoID}" allowfullscreen></iframe>
+                `;
 
-                    let div = document.createElement("div");
-                    div.innerHTML = `
-                        <iframe src="https://www.youtube.com/embed/${videoID}" allowfullscreen></iframe>
-                        <p>${title}</p>
-                    `;
-                    mixes.appendChild(div);
-                }
+                container.appendChild(div);
             }
         }
+    });
+
 
        
         if(type === "DJ Drop"){
@@ -376,7 +379,6 @@ fetch(url)
             }
         }
     });
-});
     </script>
 </body>
 </html>
